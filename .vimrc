@@ -47,9 +47,9 @@ nmap <silent> ;c :call RunCpp()<CR>
 endif
 nmap <silent> ;p :echo Runpython(bufname(winbufnr(winnr())))<CR>
 nmap <silent> ;r :echo Runpython("-cprint(".getline(".").")")<CR>
-
 nmap <silent> ;bs \bs
-
 nmap <silent> ;bv \bv
-
 nmap <silent> ;be \be
+execute pathogen#infect()
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
