@@ -11,45 +11,42 @@ set ai
 
 colorscheme freya
 if has('win32')
-au GUIEnter * simalt ~x
-
+	au GUIEnter * simalt ~x
 else
-au GUIEnter * call MaximizeWindow()
+	au GUIEnter * call MaximizeWindow()
 endif
 
 function! MaximizeWindow()
-silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+	silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
+
 autocmd FileType c,cpp,html,php,python set shiftwidth=4 | set expandtab
 set nobackup
 set nu
 imap <silent> <C-K> <Left>
 imap <silent> <C-L> <Right>
-function Runpython(str)
-return system("python ".a:str)
+
+function RunPythonStr(str)
+	return system("python -c'print(".a:str.")'")
 endfunction
+
+function RunPython()
+	execute "! python %"
+endfunction
+
 function RunCpp()
-
-execute "w"
-
-set makeprg=g++\ -o\ %<\ %
-
-silent make
-let myfile=expand("%:r")
-if filereadable(myfile)
-execute "! ./%< && rm ./%<"
-endif
+	execute "w"
+	set makeprg=g++\ -o\ %<\ %
+	silent make
+	let myfile=expand("%:r")
+	if filereadable(myfile)
+		execute "! ./%< && rm ./%<"
+	endif
 endfunction
-if has('win32')
-nmap <silent> ;c :w<CR>:!vc "%"<CR>
-else
-nmap <silent> ;c :call RunCpp()<CR>
-endif
-nmap <silent> ;p :echo Runpython(bufname(winbufnr(winnr())))<CR>
-nmap <silent> ;r :echo Runpython("-cprint(".getline(".").")")<CR>
-nmap <silent> ;bs \bs
-nmap <silent> ;bv \bv
-nmap <silent> ;be \be
+
+autocmd FileType cpp nmap <silent> <F5> :call RunCpp()<CR>
+autocmd FileType python nmap <silent> <F5> :call RunPython()<CR>
+nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
 execute pathogen#infect()
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
