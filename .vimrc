@@ -23,6 +23,7 @@ endfunction
 autocmd FileType c,cpp,html,php,python set shiftwidth=4 | set expandtab
 set nobackup
 set nu
+hi PmenuSel ctermbg=DarkBlue
 imap <silent> <C-K> <Left>
 imap <silent> <C-L> <Right>
 
@@ -37,15 +38,28 @@ endfunction
 function RunCpp()
 	execute "w"
 	set makeprg=g++\ -o\ %<\ %
-	silent make
+	make
 	let myfile=expand("%:r")
 	if filereadable(myfile)
 		execute "! ./%< && rm ./%<"
 	endif
 endfunction
 
+function Test(str)
+	return 'OK'
+endfunction
+function IsCharBeforeCursorEmpty()
+	return getline(".")[col(".")-2] =~ "^\\s*$"
+endfunction
+
+function IsCurrentLineEmpty()
+	return getline(".") =~ "^\\s*$"
+endfunction
+
 autocmd FileType cpp nmap <silent> <F5> :call RunCpp()<CR>
 autocmd FileType python nmap <silent> <F5> :call RunPython()<CR>
+autocmd FileType c,cpp,html,php,python inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-n>"
+autocmd FileType c,cpp,html,php,python inoremap <expr> { IsCharBeforeCursorEmpty()?"{<CR>}<UP><CR>\t":"{"
 nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
 execute pathogen#infect()
 filetype plugin on
