@@ -66,3 +66,5 @@ nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
 execute pathogen#infect()
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+
+nnoremap <C-v> dd"0P
