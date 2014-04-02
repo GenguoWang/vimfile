@@ -32,6 +32,7 @@ function RunPythonStr(str)
 endfunction
 
 function RunPython()
+	execute "w"
 	execute "! python %"
 endfunction
 
@@ -41,7 +42,8 @@ function RunCpp()
 	make
 	let myfile=expand("%:r")
 	if filereadable(myfile)
-		execute "! ./%< && rm ./%<"
+		execute "! ./%<"
+		silent execute "! rm ./%<"
 	endif
 endfunction
 
