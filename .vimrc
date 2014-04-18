@@ -20,7 +20,7 @@ function! MaximizeWindow()
 	silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
 
-autocmd FileType c,cpp,html,php,python set shiftwidth=4 | set expandtab
+autocmd FileType c,cpp,html,php,python,java set shiftwidth=4 | set expandtab
 set nobackup
 set nu
 hi PmenuSel ctermbg=DarkBlue
@@ -60,11 +60,11 @@ endfunction
 
 autocmd FileType cpp nmap <silent> <F5> :call RunCpp()<CR>
 autocmd FileType python nmap <silent> <F5> :call RunPython()<CR>
-autocmd FileType c,cpp,html,php,python inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-n>"
-autocmd FileType c,cpp,html,php,python inoremap <expr> { IsCharBeforeCursorEmpty()?"{<CR>}<UP><CR>\t":"{"
+autocmd FileType c,cpp,html,php,python,java inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-n>"
+autocmd FileType c,cpp,html,php,python,java inoremap <expr> { IsCharBeforeCursorEmpty()?"{<CR>}<UP><CR>\t":"{"
 nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
 execute pathogen#infect()
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
-nnoremap <C-v> dd"0P
+nnoremap <C-v> pkdd
