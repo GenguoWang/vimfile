@@ -24,6 +24,7 @@ autocmd FileType c,cpp,html,php,python,java set shiftwidth=4 | set expandtab
 set nobackup
 set nu
 hi PmenuSel ctermbg=DarkBlue
+hi Visual ctermfg=White ctermbg=LightBlue
 imap <silent> <C-K> <Left>
 imap <silent> <C-L> <Right>
 
