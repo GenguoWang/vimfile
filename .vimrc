@@ -62,7 +62,7 @@ endfunction
 autocmd FileType cpp nmap <silent> <F5> :call RunCpp()<CR>
 autocmd FileType python nmap <silent> <F5> :call RunPython()<CR>
 autocmd FileType c,cpp,html,php,python,java inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-n>"
-autocmd FileType c,cpp,html,php,python,java inoremap <expr> { IsCharBeforeCursorEmpty()?"{<CR>}<UP><CR>\t":"{"
+autocmd FileType c,cpp,html,php,python,java inoremap <expr> { IsCharBeforeCursorEmpty()?"{<CR><CR>}<UP>\t":"{"
 nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
 execute pathogen#infect()
 filetype plugin on
