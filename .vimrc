@@ -70,14 +70,3 @@ set omnifunc=syntaxcomplete#Complete
 
 nnoremap <C-v> pkdd
 
-function AddHeader()
-	let s:tmpLine = line(".")
-	let s:strname = toupper(expand("%:t"))
-	let s:DEF = substitute(s:strname,'\.','_',"")
-	let s:DEF = "_".s:DEF."_"
-	
-	call append(s:tmpLine-1,"#ifndef ".s:DEF)
-	call append(s:tmpLine,"#define ".s:DEF)
-	call append(s:tmpLine+1,"#endif")
-	return s:tmpLine
-endfunction
