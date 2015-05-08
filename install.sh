@@ -1,5 +1,5 @@
 #! /bin/bash
 cp .vimrc ~/.vimrc
 mkdir -p ~/.vim
-cp -r * ~/.vim
+cp -rp * ~/.vim
 echo "success"

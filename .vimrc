@@ -20,7 +20,7 @@ function! MaximizeWindow()
 	silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
 
-autocmd FileType c,cpp,html,php,python,java set shiftwidth=4 | set expandtab
+autocmd FileType c,cpp,html,php,python,java,ruby,modula2,markdown set shiftwidth=4 | set expandtab
 set nobackup
 set nu
 hi PmenuSel ctermbg=DarkBlue
@@ -35,6 +35,11 @@ endfunction
 function RunPython()
 	execute "w"
 	execute "! python %"
+endfunction
+
+function RunMarkdown()
+	execute "w"
+	execute "! ~/.vim/tools/md.py % > %.html"
 endfunction
 
 function RunCpp()
@@ -61,6 +66,7 @@ endfunction
 
 autocmd FileType cpp nmap <silent> <F5> :call RunCpp()<CR>
 autocmd FileType python nmap <silent> <F5> :call RunPython()<CR>
+autocmd FileType modula2,markdown nmap <silent> <F5> :call RunMarkdown()<CR>
 autocmd FileType c,cpp,html,php,python,java inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-n>"
 autocmd FileType c,cpp,html,php,python,java inoremap <expr> { IsCharBeforeCursorEmpty()?"{<CR>}<ESC>O\t":"{"
 nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
