@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
-  width: 45em;
+  width: {BODY_WIDTH};
   border: 1px solid #ddd;
   outline: 1300px solid #fff;
   margin: 16px auto;
