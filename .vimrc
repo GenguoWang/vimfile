@@ -28,6 +28,11 @@ hi Visual ctermfg=White ctermbg=LightBlue
 imap <silent> <C-K> <Left>
 imap <silent> <C-L> <Right>
 
+"http://vim.wikia.com/wiki/VimTip1386
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+
 function RunPythonStr(str)
 	return system("python -c'print(".a:str.")'")
 endfunction
@@ -35,6 +40,11 @@ endfunction
 function RunPython()
 	execute "w"
 	execute "! python %"
+endfunction
+
+function RunRuby()
+	execute "w"
+	execute "! ruby %"
 endfunction
 
 function RunMarkdown()
@@ -66,8 +76,10 @@ endfunction
 
 autocmd FileType cpp nmap <silent> <F5> :call RunCpp()<CR>
 autocmd FileType python nmap <silent> <F5> :call RunPython()<CR>
+autocmd FileType ruby nmap <silent> <F5> :call RunRuby()<CR>
 autocmd FileType modula2,markdown nmap <silent> <F5> :call RunMarkdown()<CR>
 autocmd FileType c,cpp,html,php,python,java inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-n>"
+autocmd FileType ruby inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-x><C-o>"
 autocmd FileType c,cpp,html,php,python,java inoremap <expr> { IsCharBeforeCursorEmpty()?"{<CR>}<ESC>O\t":"{"
 nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
 execute pathogen#infect()
