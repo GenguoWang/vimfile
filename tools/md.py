@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#gfm extensions: https://github.com/google/py-gfm/
 import sys
 import os
 import markdown
@@ -13,7 +14,7 @@ def mdToHtml(fileName):
     content = open(fileName).read().decode("utf-8")
     tplName = os.path.join(dirname,"md.tpl")
     tplContent = open(tplName).read().decode("utf-8")
-    md = markdown.Markdown(extensions = ['markdown.extensions.meta'],output_format="html5")
+    md = markdown.Markdown(extensions = ['markdown.extensions.meta','gfm'],output_format="html5")
     html = md.convert(content)
 
     title = getValue(u'title', md.Meta)

@@ -31,6 +31,8 @@ imap <silent> <C-L> <Right>
 "http://vim.wikia.com/wiki/VimTip1386
 set completeopt=longest,menuone
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 
 function RunPythonStr(str)
@@ -38,13 +40,11 @@ function RunPythonStr(str)
 endfunction
 
 function RunPython()
-	execute "w"
-	execute "! python %"
+	execute "w !python"
 endfunction
 
 function RunRuby()
-	execute "w"
-	execute "! ruby %"
+	execute "w !ruby"
 endfunction
 
 function RunMarkdown()
