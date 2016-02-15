@@ -20,7 +20,7 @@ function! MaximizeWindow()
 	silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
 
-autocmd FileType c,cpp,html,php,python,java,ruby,lua,modula2,markdown set shiftwidth=4 | set expandtab
+autocmd FileType c,cpp,html,php,python,java,ruby,lua,modula2,markdown,javascript set shiftwidth=4 | set expandtab
 set nobackup
 set nu
 hi PmenuSel ctermbg=DarkBlue
@@ -93,4 +93,3 @@ filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 nnoremap <C-v> pkdd
-
