@@ -3,8 +3,8 @@ set incsearch
 set hlsearch
 set fileencodings=utf-8,gbk 
 set ambiwidth=double 
-set tabstop=4
-set softtabstop=4
+set tabstop=2
+set softtabstop=2
 syntax on
 
 set ai
@@ -20,7 +20,7 @@ function! MaximizeWindow()
 	silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
 
-autocmd FileType c,cpp,html,php,python,java,ruby,lua,modula2,markdown,javascript set shiftwidth=4 | set expandtab
+set shiftwidth=2 | set expandtab
 set nobackup
 set nu
 hi PmenuSel ctermbg=DarkBlue
