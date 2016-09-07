@@ -5,6 +5,7 @@ set fileencodings=utf-8,gbk
 set ambiwidth=double 
 set tabstop=2
 set softtabstop=2
+set backspace=indent,eol,start
 syntax on
 
 set ai
@@ -91,5 +92,3 @@ nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
 execute pathogen#infect()
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-
-nnoremap <C-v> pkdd
