@@ -93,5 +93,5 @@ execute pathogen#infect()
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
-nmap gt :bn<CR>
-nmap gT :bp<CR>
+nmap gt :w<CR>:bn<CR>
+nmap gT :w<CR>:bp<CR>
