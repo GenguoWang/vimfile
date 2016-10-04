@@ -85,9 +85,9 @@ autocmd FileType python nmap <silent> <F5> :call RunPython()<CR>
 autocmd FileType ruby nmap <silent> <F5> :call RunRuby()<CR>
 autocmd FileType lua nmap <silent> <F5> :call RunTorch()<CR>
 autocmd FileType modula2,markdown nmap <silent> <F5> :call RunMarkdown()<CR>
-autocmd FileType c,cpp,html,php,python,java inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-n>"
+autocmd FileType c,cpp,html,php,python,java,javascript inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-n>"
 autocmd FileType ruby,lua inoremap <expr> <TAB> IsCharBeforeCursorEmpty()?"\t":"<C-x><C-o>"
-autocmd FileType c,cpp,html,php,python,java,lua inoremap <expr> { IsCurrentLineEmpty()?"{<CR>}<ESC>O\t":"{"
+autocmd FileType c,cpp,html,php,python,java,lua,javascript inoremap <expr> { IsCurrentLineEmpty()?"{<CR>}<ESC>O\t":"{"
 nmap <silent> <F7> :echo RunPythonStr(getline("."))<CR>
 execute pathogen#infect()
 filetype plugin on
